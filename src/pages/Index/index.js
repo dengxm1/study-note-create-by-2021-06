@@ -360,7 +360,7 @@ export default function() {
 
     //右键添加时间菜单
     graph.on('node:contextmenu', ({ cell, e }) => {
-      const p = this.graph.clientToGraph(e.clientX, e.clientY)
+      const p = graph.clientToGraph(e.clientX, e.clientY)
       cell.addTools([
         {
           name: 'contextmenu',

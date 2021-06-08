@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { Layout, Menu } from 'antd';
+import Link from 'umi/link';
 
 import styles from './index.less';
 
@@ -27,14 +28,14 @@ const trigger = (<div className={`${styles.triggerContent} ${collapsed?styles.op
     >
       <div className="logo" />
       <Menu mode="inline" defaultSelectedKeys={['1']}>
-        <Menu.Item key="1">
-          antv/x6
+      <Menu.Item key="1">
+        <Link to="/">飞线图</Link>             
         </Menu.Item>
         <Menu.Item key="2">
-          nav 2
+           <Link to="/x6">antv/x6</Link>        
         </Menu.Item>
         <Menu.Item key="3">
-          nav 3
+        <Link to="/ehcarts">ehcarts</Link>       
         </Menu.Item>
         <Menu.Item key="4">
           nav 4
