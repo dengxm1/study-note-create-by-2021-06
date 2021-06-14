@@ -1,6 +1,7 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { Layout, Menu } from 'antd';
 import Link from 'umi/link';
+import router from 'umi/router';
 
 import styles from './index.less';
 
@@ -8,10 +9,21 @@ const { Sider } = Layout;
 
 function BasicLayout(props) {
 
+  const [selectedKeys,setSelectedKeys] = useState('/');
   const [collapsed, setCollapsed] = useState(0);
+
+  useEffect(()=>{
+    setSelectedKeys(props.match.url)
+    router.replace(props.match.url)
+  },[])
+
 
   const collapse = collapsed =>{
     setCollapsed(collapsed)
+  }
+
+  const menuSelect = ({item, key, keyPath, selectedKeys}) =>{
+      setSelectedKeys(key)
   }
 
 const trigger = (<div className={`${styles.triggerContent} ${collapsed?styles.openTigger:styles.closeTigger}`}></div>)
@@ -27,18 +39,18 @@ const trigger = (<div className={`${styles.triggerContent} ${collapsed?styles.op
       theme="light"
     >
       <div className="logo" />
-      <Menu mode="inline" defaultSelectedKeys={['1']}>
-      <Menu.Item key="1">
+      <Menu mode="inline" selectedKeys={[selectedKeys]} onSelect={menuSelect}>
+      <Menu.Item key="/">
         <Link to="/">飞线图</Link>             
         </Menu.Item>
-        <Menu.Item key="2">
+        <Menu.Item key="/x6">
            <Link to="/x6">antv/x6</Link>        
         </Menu.Item>
-        <Menu.Item key="3">
+        <Menu.Item key="/ehcarts">
         <Link to="/ehcarts">ehcarts</Link>       
         </Menu.Item>
-        <Menu.Item key="4">
-          nav 4
+        <Menu.Item key="/gdMap">
+        <Link to="/gdMap">高德地图</Link>    
         </Menu.Item>
       </Menu>
     </Sider>

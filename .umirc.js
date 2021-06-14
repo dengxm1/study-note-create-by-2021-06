@@ -2,6 +2,7 @@
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
+  history: 'hash',
   routes: [
     {
       path: '/',
@@ -9,7 +10,8 @@ export default {
       routes: [
         { path: '/', component: '../pages/flyLine/index' }, ///pages/index
         { path: '/x6', component: '../pages/Index/index' },
-        { path: '/ehcarts', component: '../pages/ehcarts/index' },
+        { path: '/ehcarts', component: '../pages/ehcarts/index'},
+        { path: '/gdMap', component: '../pages/gdMap/index'},
       ]
     }
   ],
